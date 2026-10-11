@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-labelledby="heroTitle heroDesc">
+  <title id="heroTitle">boss-recruit-kit —— Boss 直聘招聘初筛自动化工具链</title>
+  <desc id="heroDesc">左侧是项目名与一句话说明：把 Boss 直聘招聘初筛的重复劳动自动化，并用会话 id 加指纹核对保证不认错人。右侧是四层结构：Boss 页面（扩展注入，不使用 CDP）→ 本地桥 127.0.0.1:8898 → 调用层（boss 命令行与 mcp__boss__ 工具）→ 产出（名单表格、简历 PDF、简历截图）。</desc>
+
+  <rect width="1200" height="400" rx="20" fill="#0B0D0F"/>
+  <rect x="0.75" y="0.75" width="1198.5" height="398.5" rx="19.5" fill="none" stroke="#1F2428" stroke-width="1.5"/>
+
+  <!-- 左侧：身份 -->
+  <g id="title-block" transform="translate(60 0)">
+    <text x="0" y="96" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Courier New', monospace" font-size="20" fill="#14B8A6" letter-spacing="1.2">MV3 EXTENSION · LOCAL BRIDGE · CLI · MCP</text>
+
+    <text x="0" y="164" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="56" font-weight="700" fill="#E8EAED">boss-recruit-kit</text>
+
+    <text x="0" y="216" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="22" fill="#C9D1D9">把 Boss 直聘招聘初筛的重复劳动自动化，</text>
+    <text x="0" y="248" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="22" fill="#C9D1D9">并用「会话 id + 指纹核对」保证不认错人。</text>
+
+    <g id="meta">
+      <rect x="0" y="292" width="128" height="38" rx="10" fill="#11161A" stroke="#232A30" stroke-width="1.5"/>
+      <text x="18" y="317" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Courier New', monospace" font-size="18" fill="#8B949E">no CDP</text>
+      <rect x="140" y="292" width="214" height="38" rx="10" fill="#11161A" stroke="#232A30" stroke-width="1.5"/>
+      <text x="158" y="317" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Courier New', monospace" font-size="18" fill="#8B949E">verified writes</text>
+      <rect x="366" y="292" width="150" height="38" rx="10" fill="#11161A" stroke="#232A30" stroke-width="1.5"/>
+      <text x="384" y="317" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Courier New', monospace" font-size="18" fill="#8B949E">node ≥ 20</text>
+    </g>
+  </g>
+
+  <!-- 右侧：真实结构（system map） -->
+  <g id="project-proof" transform="translate(690 0)">
+    <g id="motif" transform="translate(0 46)">
+      <rect x="0" y="0" width="26" height="26" rx="7" fill="none" stroke="#14B8A6" stroke-width="1.5"/>
+      <rect x="7" y="7" width="12" height="2" rx="1" fill="#14B8A6"/>
+      <rect x="7" y="12" width="12" height="2" rx="1" fill="#14B8A6"/>
+      <rect x="7" y="17" width="8" height="2" rx="1" fill="#14B8A6"/>
+      <text x="38" y="19" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Courier New', monospace" font-size="18" fill="#8B949E">id + fingerprint</text>
+    </g>
+
+    <g id="flow-lines" stroke="#2A3238" stroke-width="2">
+      <path d="M24 148 L24 168"/>
+      <path d="M24 226 L24 246"/>
+      <path d="M24 304 L24 324"/>
+    </g>
+
+    <g id="layer-page" transform="translate(0 90)">
+      <rect x="0" y="0" width="450" height="58" rx="12" fill="#11161A" stroke="#232A30" stroke-width="1.5"/>
+      <circle cx="24" cy="29" r="4.5" fill="#14B8A6"/>
+      <text x="46" y="26" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="20" fill="#E8EAED">Boss 沟通页 · 在线简历（WASM 画布）</text>
+      <text x="46" y="48" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Courier New', monospace" font-size="18" fill="#8B949E">扩展注入 · 不使用 CDP</text>
+    </g>
+
+    <g id="layer-bridge" transform="translate(0 168)">
+      <rect x="0" y="0" width="450" height="58" rx="12" fill="#11161A" stroke="#232A30" stroke-width="1.5"/>
+      <circle cx="24" cy="29" r="4.5" fill="#14B8A6"/>
+      <text x="46" y="26" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="20" fill="#E8EAED">本地桥 127.0.0.1:8898 · ws:8899</text>
+      <text x="46" y="48" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Courier New', monospace" font-size="18" fill="#8B949E">零依赖 Node · 心跳保活</text>
+    </g>
+
+    <g id="layer-callers" transform="translate(0 246)">
+      <rect x="0" y="0" width="450" height="58" rx="12" fill="#11161A" stroke="#232A30" stroke-width="1.5"/>
+      <circle cx="24" cy="29" r="4.5" fill="#14B8A6"/>
+      <text x="46" y="26" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="20" fill="#E8EAED">调用层 boss CLI · mcp__boss__*</text>
+      <text x="46" y="48" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Courier New', monospace" font-size="18" fill="#8B949E">12 命令 · 9 个 MCP 工具</text>
+    </g>
+
+    <g id="layer-output" transform="translate(0 324)">
+      <rect x="0" y="0" width="450" height="58" rx="12" fill="#0F1A1C" stroke="#14B8A6" stroke-width="1.5"/>
+      <circle cx="24" cy="29" r="4.5" fill="#14B8A6"/>
+      <text x="46" y="26" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="20" fill="#E8EAED">产出 名单 xlsx · 简历 PDF · 截图</text>
+      <text x="46" y="48" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Courier New', monospace" font-size="18" fill="#5EEAD4">交付目录只放交付物</text>
+    </g>
+  </g>
+</svg>

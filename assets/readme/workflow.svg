@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="wfTitle wfDesc">
+  <title id="wfTitle">一次真实招聘季的完整链路</title>
+  <desc id="wfDesc">四阶段漏斗：200 位打招呼候选人 → 52 位通过第一段硬门槛 → 30 位交 HR 并完成触达 → 23 位回传了附件简历 PDF。每一步都按会话 id 操作并可核验。</desc>
+
+  <rect width="1200" height="300" rx="20" fill="#0B0D0F"/>
+  <rect x="0.75" y="0.75" width="1198.5" height="298.5" rx="19.5" fill="none" stroke="#1F2428" stroke-width="1.5"/>
+
+  <text x="52" y="62" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="40" font-weight="700" fill="#E8EAED">一次真实招聘季的完整链路</text>
+  <text x="52" y="96" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="20" fill="#8B949E">每一步都按会话 id 操作，结果可核验</text>
+
+  <!-- 阶段 1 -->
+  <g id="stage-1" transform="translate(52 124)">
+    <rect x="0" y="0" width="250" height="118" rx="14" fill="#11161A" stroke="#232A30" stroke-width="1.5"/>
+    <text x="24" y="58" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="54" font-weight="700" fill="#E8EAED">200</text>
+    <text x="24" y="86" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="20" fill="#C9D1D9">打招呼候选人</text>
+    <text x="24" y="108" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Courier New', monospace" font-size="18" fill="#8B949E">留言全文入池</text>
+  </g>
+
+  <!-- 阶段 2 -->
+  <g id="stage-2" transform="translate(334 124)">
+    <rect x="0" y="0" width="250" height="118" rx="14" fill="#11161A" stroke="#232A30" stroke-width="1.5"/>
+    <text x="24" y="58" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="54" font-weight="700" fill="#E8EAED">52</text>
+    <text x="24" y="86" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="20" fill="#C9D1D9">通过第一段硬门槛</text>
+    <text x="24" y="108" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Courier New', monospace" font-size="18" fill="#8B949E">学历·年限·城市·预算</text>
+  </g>
+
+  <!-- 阶段 3 -->
+  <g id="stage-3" transform="translate(616 124)">
+    <rect x="0" y="0" width="250" height="118" rx="14" fill="#11161A" stroke="#232A30" stroke-width="1.5"/>
+    <text x="24" y="58" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="54" font-weight="700" fill="#E8EAED">30</text>
+    <text x="24" y="86" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="20" fill="#C9D1D9">交 HR 并完成触达</text>
+    <text x="24" y="108" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Courier New', monospace" font-size="18" fill="#8B949E">话术·求简历·收藏</text>
+  </g>
+
+  <!-- 阶段 4 -->
+  <g id="stage-4" transform="translate(898 124)">
+    <rect x="0" y="0" width="250" height="118" rx="14" fill="#0F1A1C" stroke="#14B8A6" stroke-width="1.5"/>
+    <text x="24" y="58" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="54" font-weight="700" fill="#14B8A6">23</text>
+    <text x="24" y="86" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="20" fill="#C9D1D9">回传附件简历 PDF</text>
+    <text x="24" y="108" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Courier New', monospace" font-size="18" fill="#5EEAD4">自动落盘并校验</text>
+  </g>
+
+  <!-- 阶段之间的箭头 -->
+  <g id="arrows" fill="none" stroke="#2A3238" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M306 183 L318 183 M312 177 L318 183 L312 189"/>
+    <path d="M588 183 L600 183 M594 177 L600 183 L594 189"/>
+    <path d="M870 183 L882 183 M876 177 L882 183 L876 189"/>
+  </g>
+
+  <text x="52" y="274" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Courier New', monospace" font-size="18" fill="#6B7280">数字来自一次真实招聘季的聚合结果，不含任何候选人个人信息</text>
+</svg>

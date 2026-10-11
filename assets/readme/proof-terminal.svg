@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-labelledby="termTitle termDesc">
+  <title id="termTitle">真实命令输出示例</title>
+  <desc id="termDesc">终端示例：npm run bridge 起桥并显示扩展已连上；npm run doctor 自检通过；boss audit 逐人核验指纹、话术、求简历与收藏，并给出合计行。姓名为占位符。</desc>
+
+  <rect width="1200" height="400" rx="20" fill="#0B0D0F"/>
+  <rect x="0.75" y="0.75" width="1198.5" height="398.5" rx="19.5" fill="none" stroke="#1F2428" stroke-width="1.5"/>
+
+  <g id="terminal" transform="translate(52 40)">
+    <rect x="0" y="0" width="1096" height="320" rx="14" fill="#0D1117" stroke="#232A30" stroke-width="1.5"/>
+    <path d="M0 44 H1096" stroke="#232A30" stroke-width="1.5"/>
+    <circle cx="26" cy="22" r="6" fill="#2A3238"/>
+    <circle cx="48" cy="22" r="6" fill="#2A3238"/>
+    <circle cx="70" cy="22" r="6" fill="#2A3238"/>
+    <text x="96" y="29" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Courier New', monospace" font-size="18" fill="#6B7280">boss-recruit-kit — 自检与逐人核验</text>
+
+    <g id="transcript" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Courier New', monospace" font-size="20">
+      <text x="28" y="80" fill="#14B8A6">$</text>
+      <text x="56" y="80" fill="#E8EAED">npm run bridge</text>
+      <text x="28" y="108" fill="#3FB950">✓</text>
+      <text x="56" y="108" fill="#C9D1D9">桥就绪 http://127.0.0.1:8898（扩展已连上）</text>
+
+      <text x="28" y="146" fill="#14B8A6">$</text>
+      <text x="56" y="146" fill="#E8EAED">npm run doctor</text>
+      <text x="28" y="174" fill="#3FB950">✓</text>
+      <text x="56" y="174" fill="#C9D1D9">Node 24.21.0　✓ 扩展已加载　✓ 桥已连上　✓ 页面可读（40 条会话）</text>
+
+      <text x="28" y="212" fill="#14B8A6">$</text>
+      <text x="56" y="212" fill="#E8EAED">boss audit --people people.json</text>
+      <text x="28" y="242" fill="#8B949E">姓名　　　　会话id　　　　指纹　话术　求简历　收藏</text>
+      <text x="28" y="268" fill="#C9D1D9">候选人A　　 &lt;会话id&gt;　 一致　已发　已发　　已收藏</text>
+      <text x="28" y="294" fill="#C9D1D9">候选人B　　 &lt;会话id&gt;　 一致　已发　已发　　已收藏</text>
+      <text x="28" y="320" fill="#5EEAD4">合计 2 人｜指纹一致 2｜话术 2｜求简历 2｜收藏 2｜失败 0</text>
+    </g>
+  </g>
+</svg>
+
+
