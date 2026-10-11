@@ -51,9 +51,9 @@
 
 | 能力 | 命令 | 说明 |
 | --- | --- | --- |
-| 起桥 / 停桥 | `boss bridge start [--foreground]` / `boss bridge stop` | 默认后台运行；`--foreground` 便于看日志 |
+| 起桥 | `boss bridge start [--foreground]` | 默认后台运行；`--foreground` 便于看日志。`boss bridge stop` **只提示、不强杀**，真正停桥需手动结束 node 进程（见 [INSTALL §3](docs/INSTALL.md#3-启动本地桥)） |
 | 起浏览器 | `boss browser open [--clear-cache] [--no-proxy]` | **可见窗口 + 加载扩展**，不含任何调试端口 |
-| MCP 服务器 | `npm run mcp` | stdio，暴露 `mcp__boss__*` 工具 |
+| MCP 服务器 | `npm run mcp` | **零依赖**自实现 stdio（不用官方 SDK），暴露 `mcp__boss__*` 工具 |
 | 冒烟测试 | `npm run smoke` | 一键验证链路 |
 | 打包 | `npm run package` | 产出可分发的 bundle |
 
@@ -181,7 +181,7 @@ DSH Desktop 是**本项目维护者使用与测试的客户端**，不是运行�
 重启后应出现 mcp__boss__* 工具
 ```
 
-特点：Agent 直接拿到结构化工具，不用拼命令行。配置文件是纯声明式的，不含可执行逻辑，便于审计。
+特点：Agent 直接拿到结构化工具，不用拼命令行。配置文件是纯声明式的，不含可执行逻辑，便于审计。MCP 服务器是**零依赖自实现 stdio**（不引入官方 SDK），直接 `npm run mcp` 即可，无需为它额外安装任何包。
 
 > 两条路线可以同时用。Skill 负责「怎么想」，插件负责「怎么调」。
 

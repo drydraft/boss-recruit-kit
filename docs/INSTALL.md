@@ -120,7 +120,7 @@ curl -s -X POST http://127.0.0.1:8898/cmd \
 
 **桥的端口只绑定 `127.0.0.1`**，不监听 `0.0.0.0`，局域网内其它机器无法访问。
 
-端口可用环境变量覆盖：`BRIDGE_HTTP_PORT`（默认 8898）、`BRIDGE_WS_PORT`（默认 8899）。改端口后要同步改扩展里的桥地址。
+桥地址可用环境变量覆盖：`BOSS_BRIDGE_HTTP`（默认 `http://127.0.0.1:8898`）、`BOSS_BRIDGE_WS`（默认 `ws://127.0.0.1:8899`）。改地址后要同步改扩展里的桥地址。完整环境变量表见 [§11](#11-环境变量)。
 
 运行期数据落在 `packages/bridge/data/`：`bridge.log`（日志）、`jobs-YYYYMMDD.jsonl`（任务记录）。
 
@@ -128,20 +128,35 @@ curl -s -X POST http://127.0.0.1:8898/cmd \
 
 ```bash
 # CLI 方式：默认后台运行
-boss bridge start
-boss bridge status
-boss bridge stop
+boss bridge start                  # 后台起桥
+boss bridge start --foreground     # 前台起桥，实时看日志
+boss bridge status                 # 看桥 + 扩展连接状态
 
-# 或前台运行，便于实时看日志
-boss bridge start --foreground
-```
-
-# 开发用：前台运行，Ctrl+C 退出
+# 开发用：直接前台跑，Ctrl+C 退出
 npm run bridge
 
-# 长期用：建议放进系统服务或进程管理器，例如 pm2（可选）
+# 长期用：建议交给系统服务或进程管理器（例如 pm2）
 pm2 start "npm run bridge" --name boss-bridge
+pm2 delete boss-bridge             # 由 pm2 托管时才这样停
 ```
+
+> **关于 `boss bridge stop`**：该子命令**只做提示，不会强行杀掉进程**（避免误杀你其它的 node 进程）。
+> 要真正停掉后台桥，请**手动结束对应的 node 进程**：
+>
+> ```powershell
+> # Windows：先找到占用 8898 的 PID，再结束它
+> netstat -ano | findstr :8898
+> taskkill /PID <PID> /F
+> ```
+>
+> ```bash
+> # macOS
+> lsof -nP -iTCP:8898 -sTCP:LISTEN
+> kill <PID>
+> ```
+>
+> 如果你是用 `npm run bridge` 前台跑的，直接在该终端 **Ctrl+C** 即可。
+
 
 ### 启动顺序很重要
 
@@ -301,8 +316,10 @@ npm install
 
 ```bash
 # 1. 停掉桥
-#    Ctrl+C（前台）或：
-pm2 delete boss-bridge
+#    - 如果是 `npm run bridge` 前台跑的：在该终端 Ctrl+C
+#    - 如果是 `boss bridge start` 后台起的：boss bridge stop 只提示，
+#      需手动结束后台 node 进程（Windows: netstat -ano | findstr :8898 → taskkill /PID <PID> /F）
+#    - 如果是 pm2 托管的：pm2 delete boss-bridge
 
 # 2. 移除扩展
 #    chrome://extensions → boss-bridge → 「移除 / Remove」
@@ -319,7 +336,62 @@ pm2 delete boss-bridge
 rm -rf <repo>
 ```
 
-> **删除前提醒**：profile 目录与本仓库输出目录中包含候选人个人信息与你的登录凭据。删除是不可恢复的，请确认不再需要留档，或已按你的组织合规流程归档。
+> **删除前提醒**：profile 目录、`packages/bridge/data/` 与本仓库输出目录中包含候选人个人信息与你的登录凭据。删除是不可恢复的，请确认不再需要留档，或已按你的组织合规流程归档。
+
+---
+
+## 11. 环境变量
+
+**全部可选**，都有合理默认值。跨平台通用（Windows 下 PowerShell 用 `$env:NAME="..."`，`cmd` 用 `set NAME=...`）。
+
+### 桥与指令
+
+| 变量 | 默认值 | 说明 |
+| --- | --- | --- |
+| `BOSS_BRIDGE_HTTP` | `http://127.0.0.1:8898` | CLI/MCP 访问桥的 HTTP 地址 |
+| `BOSS_BRIDGE_WS` | `ws://127.0.0.1:8899` | 扩展连桥的 WebSocket 地址 |
+| `BOSS_TOOL_TIMEOUT` | 实现内默认值 | 单条指令的超时（毫秒） |
+| `BOSS_CALL_TIMEOUT_MS` | 实现内默认值 | 底层调用超时（毫秒） |
+| `BOSS_DEBUG` | 未设置 | 设为 `1` 打印错误堆栈，便于排障 |
+| `BOSS_BROWSER_PATH` | 自动探测 | Chrome/Edge 可执行文件的绝对路径 |
+
+### 目录
+
+| 变量 | 默认值 | 说明 |
+| --- | --- | --- |
+| `BOSS_PROFILE_DIR` | 实现内默认值 | 浏览器专用 profile 目录（**含登录态，勿外传**） |
+| `BOSS_DOWNLOAD_DIR` | 实现内默认值 | 附件简历 PDF 的落盘目录 |
+| `BOSS_CAPTURE_DIR` | 实现内默认值 | 在线简历截图的落盘目录 |
+
+### 用例
+
+```bash
+# 换桥端口（同时要改扩展里的桥地址）
+BOSS_BRIDGE_HTTP=http://127.0.0.1:9898 BOSS_BRIDGE_WS=ws://127.0.0.1:9899 npm run bridge
+
+# 排障：打印堆栈
+BOSS_DEBUG=1 boss send <candidate-id> --text "<开场话术>"
+
+# 指定浏览器与独立 profile
+BOSS_BROWSER_PATH="/path/to/chrome" BOSS_PROFILE_DIR="/path/to/profile" boss browser open --no-proxy
+
+# 把简历落到指定目录
+BOSS_DOWNLOAD_DIR="./输出/简历PDF" boss download-resume <candidate-id>
+```
+
+> 环境变量会影响**行为与落盘位置**。跑批前确认自己没有残留的旧变量设置（尤其是 `BOSS_PROFILE_DIR`——换了 profile 就等于换了一个未登录的浏览器）。
+
+---
+
+## 12. MCP 服务器（零依赖）
+
+`packages/mcp-server` 是**零依赖的自实现 stdio MCP 服务器**，不引入任何官方 SDK 或第三方包：
+
+```bash
+npm run mcp        # 直接以 stdio 方式启动
+```
+
+因此**不需要**为 MCP 额外 `npm install` 任何东西——`npm install` 只会装根 workspace 与各 package 自身声明的依赖（当前全部为零依赖）。挂载方式见 [README · 与 DSH Desktop 集成](../README.md#与-dsh-desktop-集成)。
 
 ---
 

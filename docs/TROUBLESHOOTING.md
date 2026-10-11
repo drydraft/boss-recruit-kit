@@ -140,7 +140,7 @@ taskkill /PID <PID> /F                             # Windows
 kill -9 <PID>                                      # macOS
 
 # 3. 端口确实要换就同时改扩展里的桥地址
-BRIDGE_HTTP_PORT=8898 npm run bridge
+BOSS_BRIDGE_HTTP=http://127.0.0.1:8898 npm run bridge
 
 # 4. 桥起来后必须刷新扩展（或重启浏览器）
 ```
@@ -223,7 +223,7 @@ grep -i 'zombie\|prune\|stale' _过程文件/logs/bridge-$(date +%F).log
 boss capture-resume <candidate-id> --out ./_过程文件/resume/<candidate-id> --screens 12 --scale 0.9
 
 # 情况二：僵尸连接 → 重启桥 + 刷新扩展
-#   Ctrl+C 停桥 → npm run bridge
+#   停桥（前台 Ctrl+C / 后台手动结束 node 进程）→ npm run bridge
 #   → chrome://extensions 点「刷新」
 #   → 重新加载目标页面
 

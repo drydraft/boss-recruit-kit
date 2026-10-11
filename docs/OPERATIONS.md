@@ -41,7 +41,7 @@ boss audit --people ./_过程文件/people.json --json
 # 2. 清理页面残留（叠层弹窗 / 幽灵浮窗）
 boss cleanup
 
-# 3. 停桥（Ctrl+C），关浏览器
+# 3. 停桥：前台跑的按 Ctrl+C；后台起的需手动结束 node 进程（boss bridge stop 只提示），然后关浏览器
 ```
 
 **收工检查**：
@@ -68,7 +68,7 @@ boss doctor --json            # 机器可读，便于脚本或 Agent 判定
 boss bridge status            # 单独看桥 + 扩展连接状态
 ```
 
-**`heartbeatAgoMs` 参考值**：正常应 **< 20000**（心跳周期 15 秒）。超过 45 秒说明扩展侧已休眠或断开。
+**心跳新鲜度**：扩展每 15 秒上报一次心跳。`boss bridge status` 里若**长时间没有新心跳**，说明扩展侧 service worker 已休眠或断开 → 见 [TROUBLESHOOTING §1](TROUBLESHOOTING.md#1-extensionconnected-false)。
 
 ---
 
