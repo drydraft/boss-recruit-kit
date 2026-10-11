@@ -1,0 +1,36 @@
+# 忽略清单
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+
+# 构建/打包产物（走 GitHub Release 附件，不入库）
+dist/
+*.tgz
+*.zip
+
+# 桥的运行时数据（日志、抓取产物）
+packages/bridge/data/
+data/
+*.log
+
+# CLI / MCP 的运行产物
+out/
+captures/
+*.jsonl
+
+# 浏览器 profile（含登录态，绝不能提交）
+profile/
+.boss-kit/
+
+# 候选人个人数据（简历、名单）—— 严禁入库
+resumes/
+简历*/
+*.pdf
+!docs/**/*.pdf
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.tmp

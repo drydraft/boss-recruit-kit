@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "boss-bridge",
+  "version": "1.0.0",
+  "description": "无 CDP 的 BOSS直聘 自动化桥：content script 只做 DOM 与拟人交互，通过 WebSocket 连本地服务。",
+  "permissions": [
+    "tabs",
+    "storage",
+    "activeTab",
+    "downloads"
+  ],
+  "host_permissions": [
+    "https://www.zhipin.com/*",
+    "https://*.zhipin.com/*"
+  ],
+  "background": {
+    "service_worker": "sw.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.zhipin.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "action": {
+    "default_title": "boss-bridge"
+  }
+}

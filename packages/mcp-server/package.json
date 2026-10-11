@@ -1,0 +1,23 @@
+{
+  "name": "@boss-kit/mcp-server",
+  "version": "0.1.0",
+  "description": "Boss 直聘招聘自动化 MCP 服务器（stdio，零依赖）：把本地桥能力暴露为 mcp__boss__* 工具，供 DSH / Claude / Codex 等客户端调用。",
+  "type": "module",
+  "license": "MIT",
+  "main": "src/server.mjs",
+  "bin": {
+    "boss-mcp": "src/server.mjs"
+  },
+  "files": [
+    "src"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/server.mjs",
+    "check": "node --check src/server.mjs"
+  },
+  "keywords": ["mcp", "model-context-protocol", "boss", "recruiting", "automation"],
+  "private": true
+}

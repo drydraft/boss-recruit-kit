@@ -1,0 +1,31 @@
+{
+  "name": "boss-recruit-kit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Boss 直聘（zhipin.com）招聘初筛自动化工具链：MV3 扩展 + 本地桥 + CLI + MCP 服务器 + DSH 插件 + 技能文档。不使用 CDP，规避站点反爬误判。",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "doctor": "node packages/cli/bin/boss.mjs doctor",
+    "bridge": "node packages/bridge/server/boss-bridge-server.cjs",
+    "boss": "node packages/cli/bin/boss.mjs",
+    "mcp": "node packages/mcp-server/src/server.mjs",
+    "check": "npm run check --workspaces --if-present && node --check packages/bridge/server/boss-bridge-server.cjs && node --check packages/mcp-server/src/server.mjs",
+    "smoke": "node scripts/smoke-test.mjs",
+    "package": "node scripts/package.mjs"
+  },
+  "keywords": [
+    "boss-zhipin",
+    "recruiting",
+    "browser-automation",
+    "mv3-extension",
+    "mcp",
+    "dsh-plugin"
+  ]
+}

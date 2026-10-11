@@ -1,0 +1,33 @@
+MIT License
+
+Copyright (c) 2025 boss-recruit-kit contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## 使用声明（重要）
+
+本软件提供的是**面向招聘方在自己账号内操作 BOSS 直聘（zhipin.com）页面的效率工具**。
+
+- 使用者应当遵守所在地区法律法规以及平台的服务条款与社区规范；
+- 请勿用于批量骚扰、爬取他人隐私数据、绕过平台正常风控、或任何未经授权的用途；
+- 请控制操作频率（参考 `docs/OPERATIONS.md` 的节奏建议），避免对平台造成不合理负担；
+- 候选人简历等个人信息属于敏感数据，请仅在你的招聘流程内使用并妥善保管，不要外传；
+- 使用本软件产生的一切后果由使用者自行承担。

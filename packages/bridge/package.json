@@ -1,0 +1,21 @@
+{
+  "name": "@boss-kit/bridge",
+  "version": "0.1.0",
+  "description": "MV3 扩展 + 本地 WebSocket/HTTP 桥：把浏览器页面操作暴露为本地命令接口。零外部依赖。",
+  "type": "commonjs",
+  "license": "MIT",
+  "main": "server/boss-bridge-server.cjs",
+  "files": [
+    "server",
+    "extension",
+    "scripts"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server/boss-bridge-server.cjs",
+    "check": "node --check server/boss-bridge-server.cjs && node --check extension/content.js && node --check extension/sw.js"
+  },
+  "private": true
+}

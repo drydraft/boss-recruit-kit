@@ -1,0 +1,22 @@
+{
+  "name": "@boss-kit/cli",
+  "version": "0.1.0",
+  "description": "Boss 直聘招聘自动化命令行：列会话、按会话 id 访问候选人、抓在线简历、发消息/求简历/收藏、下载附件简历、审计核验。",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "boss": "bin/boss.mjs"
+  },
+  "files": [
+    "bin",
+    "src"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "check": "node --check bin/boss.mjs && node --check src/bridge-client.mjs && node --check src/util.mjs && node --check src/config.mjs"
+  },
+  "keywords": ["boss", "zhipin", "recruiting", "automation", "cli"],
+  "private": true
+}

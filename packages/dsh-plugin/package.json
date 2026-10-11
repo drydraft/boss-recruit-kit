@@ -1,0 +1,28 @@
+{
+  "name": "dsh-boss-recruit-kit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "把 boss-recruit-kit 的 MCP 服务器挂载到 DSH 的配置型插件 bundle（不含业务代码）。",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "dsh": {
+    "id": "dsh-boss-recruit-kit",
+    "name": "Boss 直聘招聘自动化",
+    "version": "0.1.0",
+    "permissions": "本地进程（启动 MCP 服务器）、本地端口（桥 127.0.0.1:8898/8899）",
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "dependencies": {
+    "@deepseek-ai/dsh-mcp-client": "0.2.0-rc.2"
+  }
+}
