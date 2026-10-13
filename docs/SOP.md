@@ -79,7 +79,7 @@ boss list --limit 200 --json > ./_过程文件/list.json
 # 1) 取列表（务必保留打招呼留言全文）
 boss list --limit 200 --json > ./_过程文件/list.json
 
-# 2) G1–G6 判定：由你（或 Agent 按 skills/boss-recruiting）按上表执行，
+# 2) G1–G6 判定：由你（或 Agent 按 skills/domain-boss-recruiting）按上表执行，
 #    结果写入 ./_过程文件/stage1.json
 #    本仓库 CLI 不内置评分命令：筛选口径与命令解耦，便于按岗位改规则而不用改代码
 ```

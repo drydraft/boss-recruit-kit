@@ -221,7 +221,7 @@ EXT="$(cd "$(dirname "$0")" && pwd)/packages/bridge/extension"
 | --- | --- | --- |
 | `--user-data-dir=<专用目录>` | **必须** | 登录态隔离在专用 profile，不污染日常浏览器 |
 | `--load-extension=<扩展目录>` | **必须** | 加载 MV3 扩展 |
-| `--no-proxy-server` | **强烈建议** | 绕过系统代理，走境内直连（见 §5） |
+| `--no-proxy-server` | **强烈建议** | 不经过系统代理，走境内直连（见 §5） |
 | `--new-window <url>` | 可选 | 直接打开招聘工作台 |
 | ~~`--remote-debugging-port`~~ | **绝对不要加** | 触发站点反调试惩罚 |
 | ~~`--headless`~~ | **绝对不要加** | 无头会被跳转/验证码拦截 |

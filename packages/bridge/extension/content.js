@@ -1265,7 +1265,7 @@
   }
 
 
-  // 按块抓取：把画布切块、原生分辨率导出，规避单次响应过大导致的问题
+  // 按块抓取：把画布切块、原生分辨率导出，适配单次响应过大导致的问题
   function resumeTile(a = {}) {
     const meta = findResumeCanvasMeta();
     if (!meta) return { ok: false, error: 'no-canvas' };

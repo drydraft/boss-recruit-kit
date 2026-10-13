@@ -37,7 +37,14 @@ for (const f of [
   'packages/mcp-server/src/server.mjs',
   'packages/dsh-plugin/package.json',
   'packages/dsh-plugin/cordis.patch.yml',
-  'skills/boss-recruiting/SKILL.md',
+  'skills/README.md',
+  'skills/web-automation-router/SKILL.md',
+  'skills/core-gated-web-automation/SKILL.md',
+  'skills/core-safe-batch-operations/SKILL.md',
+  'skills/domain-boss-recruiting/SKILL.md',
+  'skills/core-gated-web-automation/scripts/preflight.mjs',
+  'skills/core-safe-batch-operations/scripts/batch-ledger.mjs',
+  'scripts/validate-skills.mjs',
 ]) (existsSync(path.join(root, f)) ? ok(f) : bad(`缺少 ${f}`));
 
 section('2. JavaScript 语法');
@@ -72,11 +79,14 @@ try {
   patch.includes('dsh-mcp-client') && patch.includes('serverName') ? ok('cordis.patch.yml 挂载了 MCP 客户端且声明 serverName') : bad('cordis.patch.yml 内容不完整');
 } catch (e) { bad(`插件清单检查失败：${e.message}`); }
 
-section('4. 技能文件 frontmatter');
-try {
-  const sk = readFileSync(path.join(root, 'skills/boss-recruiting/SKILL.md'), 'utf8');
-  /^---\s*\nname:\s*\S+\ndescription:\s*\S+/m.test(sk) ? ok('SKILL.md frontmatter 合法（name/description）') : bad('SKILL.md 缺少合法 frontmatter');
-} catch (e) { bad(`SKILL.md 读取失败：${e.message}`); }
+section('4. 技能家族架构（渐进披露）');
+{
+  const r = spawnSync(process.execPath, [path.join(root, 'scripts/validate-skills.mjs')], { encoding: 'utf8' });
+  const line = (r.stdout || '').trim().split('\n').filter(Boolean);
+  r.status === 0
+    ? ok(`validate-skills 通过：${line.filter((l) => l.includes('SKILL.md')).length} 个技能，命名/frontmatter/字数/路由表/去重全部合规`)
+    : bad(`validate-skills 未通过：\n${r.stdout || r.stderr}`);
+}
 
 section('5. 脱敏自检（public 仓库硬要求）');
 const banned = [
