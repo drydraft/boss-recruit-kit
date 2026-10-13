@@ -1,13 +1,13 @@
 # Skills — a router / core / domain family
 
-This directory ships a small skill family, not a single skill. Splitting it this way is what makes it **portable**: the mechanism is reusable, and only the thin domain layer is application-specific.
+This directory ships a small skill family, not a single skill. **The project is scoped to Boss 直聘 recruiting automation**; the split exists for maintainability: a platform change touches only the mechanism layer, a change in hiring criteria touches only the domain layer, and neither leaks into the other.
 
 ```
 skills/
 ├─ web-automation-router/         router  — decides which skills to load (user-invocable)
 ├─ core-gated-web-automation/     core    — HOW the channel, extraction, navigation, hygiene work
 ├─ core-safe-batch-operations/    core    — HOW identity, verification, idempotency, audit work
-└─ domain-boss-recruiting/        domain  — WHAT qualifies / what to say (one application)
+└─ domain-boss-recruiting/        domain  — WHAT qualifies / what to say (Boss recruiting only)
 ```
 
 ## Progressive disclosure (four levels)
@@ -37,9 +37,9 @@ Load order: **router (if needed) → both cores → one domain**. Each is a sepa
 - **Domain owns judgement** — who qualifies, what the message says, what the deliverable looks like.
 - **On conflict**, the domain skill wins for domain judgement and the cores win for mechanism.
 
-## Portability contract
+## Boundary contract
 
-Port the two cores unchanged to any other gated application. Write a new `domain-<app>/` whose `SKILL.md` is a routing table plus hard gates, and push the application's specifics into its `references/`. If you find yourself copying a core paragraph into a domain skill, the boundary is wrong — fix the core instead.
+Scope is **Boss 直聘 recruiting automation**. The boundary rule keeps it maintainable: mechanism changes go into the cores, Boss-specific judgement goes into `domain-boss-recruiting`. If a core paragraph gets copied into the domain skill, the boundary is wrong — fix the core instead. The cores happen to contain nothing application-specific, which is a side effect of that rule, not a goal of this project.
 
 ## Validating this family
 
